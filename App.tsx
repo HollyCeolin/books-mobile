@@ -6,7 +6,7 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-const API_KEY = "stepzen.net+1000::9a41fd2fb6bd16ca1993cabe89b43f8a92d5043e354eb1a215a0266f6b77f9ec";
+const API_KEY = "yinzhu::stepzen.net+1000::9a41fd2fb6bd16ca1993cabe89b43f8a92d5043e354eb1a215a0266f6b77f9ec";
 
 const client = new ApolloClient({
   uri: "https://yinzhu.stepzen.net/api/books/__graphql",
