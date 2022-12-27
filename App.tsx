@@ -4,6 +4,17 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+const API_KEY = "stepzen.net+1000::9a41fd2fb6bd16ca1993cabe89b43f8a92d5043e354eb1a215a0266f6b77f9ec";
+
+const client = new ApolloClient({
+  uri: "https://yinzhu.stepzen.net/api/books/__graphql",
+  headers: {
+    Authorization: `ApiKey ${API_KEY}`,
+  },
+  cache: new InMemoryCache(),
+})
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -14,7 +25,9 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
+        <ApolloProvider client={client}>
         <Navigation colorScheme={colorScheme} />
+        </ApolloProvider>
         <StatusBar />
       </SafeAreaProvider>
     );
